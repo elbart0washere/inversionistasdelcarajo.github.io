@@ -10,21 +10,15 @@
 <body>
   <div class="container">
     <h1 class="title">Informes</h1>
-    <p class="subheading">Accede a los informes más recientes</p>
-    <div id="latest-pdf" class="card">
-      <h2>Último informe</h2>
-      <p id="latest-title">Cargando...</p>
-      <a id="latest-link" href="#">Ver informe</a>
+    <h2>Último informe subido</h2>
+    <div id="latest-pdf">
+      <!-- Aquí aparecerá el último PDF subido -->
     </div>
     <h2>Lista de informes</h2>
-    <div id="pdf-list" class="pdf-grid">
+    <ul id="pdf-list">
       <!-- Aquí se listarán todos los PDFs -->
-    </div>
+    </ul>
   </div>
-
-  <footer class="footer">
-    <p>Inversionistas del carajo <br> Próximamente <a href="informes.html">informes del carajo</a></p>
-  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
   <script src="informes.js"></script>
