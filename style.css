@@ -8,14 +8,11 @@
 body {
   font-family: 'Lobster', cursive;
   background-color: #e60000; /* Color rojo Coca-Cola */
-  background-image: url('https://via.placeholder.com/1500x1000.png/FF0000/FFFFFF?text=Acciones+Argentina'); /* Fondo psicodélico */
-  background-size: cover;
   color: white;
   text-align: center;
   padding: 50px 20px;
 }
 
-/* Estilos para el contenedor principal */
 .container {
   margin-top: 50px;
 }
@@ -32,7 +29,6 @@ body {
   color: #f1f1f1;
 }
 
-/* Estilo para el pie de página */
 .footer {
   margin-top: 50px;
   font-size: 18px;
@@ -42,4 +38,20 @@ body {
 .footer p {
   line-height: 1.5;
   font-weight: normal;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #f1f1f1;
+  color: #e60000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: #e60000;
+  color: white;
 }
