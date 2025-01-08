@@ -1,28 +1,35 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const pdfList = document.getElementById('pdf-list');
-    const latestTitle = document.getElementById('latest-title');
-    const latestLink = document.getElementById('latest-link');
-  
-    axios.get('informes/') // Reemplaza esto por la URL de tu carpeta de informes
-      .then(response => {
-        const files = response.data.files; // Ajusta según tu estructura
-        const latestFile = files[0]; // El archivo más reciente
-  
-        latestTitle.textContent = latestFile.name;
-        latestLink.href = `informes/${latestFile.name}`;
-  
+const repoOwner = "elbart0washere";
+const repoName = "inversionistasdelcarajo.github.io";
+const folderPath = "informes";
+
+// Función para obtener los archivos de la carpeta 'informes' usando la API de GitHub
+function fetchPDFs() {
+  const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+  axios.get(apiUrl)
+    .then(response => {
+      const files = response.data.filter(file => file.name.endsWith('.pdf'));
+
+      if (files.length > 0) {
+        // Mostrar el último PDF subido
+        const latestFile = files.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))[0];
+        document.getElementById('latest-title').textContent = latestFile.name;
+        document.getElementById('latest-link').setAttribute('href', latestFile.download_url);
+
+        // Listar todos los archivos PDF
+        const pdfList = document.getElementById('pdf-list');
         files.forEach(file => {
-          const pdfItem = document.createElement('div');
-          pdfItem.classList.add('pdf-item');
-          const pdfLink = document.createElement('a');
-          pdfLink.href = `informes/${file.name}`;
-          pdfLink.textContent = file.name;
-          pdfItem.appendChild(pdfLink);
-          pdfList.appendChild(pdfItem);
+          const listItem = document.createElement('div');
+          listItem.classList.add('pdf-item');
+          listItem.innerHTML = `<a href="${file.download_url}" target="_blank">${file.name}</a>`;
+          pdfList.appendChild(listItem);
         });
-      })
-      .catch(error => {
-        console.error('Error al cargar los informes', error);
-      });
-  });
-  
+      } else {
+        document.getElementById('latest-title').textContent = "No hay informes disponibles.";
+        document.getElementById('latest-link').style.display = "none";
+      }
+    })
+    .catch(error => console.error('Error al cargar los informes:', error));
+}
+
+// Cargar los PDFs al cargar la página
+window.onload = fetchPDFs;
