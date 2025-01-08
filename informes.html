@@ -5,20 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Informes</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="informes.css">
 </head>
-<body>
+<body class="informes-page">
   <div class="container">
     <h1 class="title">Informes</h1>
-    <h2>Último informe subido</h2>
-    <div id="latest-pdf">
-      <!-- Aquí aparecerá el último PDF subido -->
+    <p class="subheading">Accede a los informes más recientes</p>
+    <div id="latest-pdf" class="card">
+      <h2>Último informe</h2>
+      <p id="latest-title">Cargando...</p>
+      <a id="latest-link" href="#">Ver informe</a>
     </div>
     <h2>Lista de informes</h2>
-    <ul id="pdf-list">
+    <div id="pdf-list" class="pdf-grid">
       <!-- Aquí se listarán todos los PDFs -->
-    </ul>
+    </div>
   </div>
+
+  <footer class="footer">
+    <p>Inversionistas del carajo <br> Próximamente <a href="informes.html">informes del carajo</a></p>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
   <script src="informes.js"></script>
