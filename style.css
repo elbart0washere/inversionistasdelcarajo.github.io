@@ -1,44 +1,45 @@
 /* Estilo global */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Fredoka One', cursive;
-    background-color: #e60000; /* Color rojo Coca-Cola */
-    color: white;
-    text-align: center;
-    padding: 50px 20px;
-  }
-  
-  /* Estilos para el contenedor principal */
-  .container {
-    margin-top: 50px;
-  }
-  
-  .title {
-    font-size: 80px;
-    letter-spacing: 5px;
-    font-weight: bold;
-    color: #f1f1f1;
-  }
-  
-  .message {
-    font-size: 30px;
-    color: #f1f1f1;
-  }
-  
-  /* Estilo para el pie de página */
-  .footer {
-    margin-top: 50px;
-    font-size: 18px;
-    color: white;
-  }
-  
-  .footer p {
-    line-height: 1.5;
-    font-weight: normal;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lobster', cursive;
+  background-color: #e60000; /* Color rojo Coca-Cola */
+  background-image: url('https://via.placeholder.com/1500x1000.png/FF0000/FFFFFF?text=Acciones+Argentina'); /* Fondo psicodélico */
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+/* Estilos para el contenedor principal */
+.container {
+  margin-top: 50px;
+}
+
+.title {
+  font-size: 80px;
+  letter-spacing: 5px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.message {
+  font-size: 30px;
+  color: #f1f1f1;
+}
+
+/* Estilo para el pie de página */
+.footer {
+  margin-top: 50px;
+  font-size: 18px;
+  color: white;
+}
+
+.footer p {
+  line-height: 1.5;
+  font-weight: normal;
+}
