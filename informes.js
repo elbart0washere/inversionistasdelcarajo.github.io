@@ -13,7 +13,6 @@ function fetchPDFs() {
   const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
   axios.get(apiUrl)
     .then(response => {
-      // Filtrar y procesar los archivos PDF
       const files = response.data
         .filter(file => file.name.endsWith('.pdf'))
         .map(file => ({
@@ -21,29 +20,30 @@ function fetchPDFs() {
           download_url: file.download_url,
           date: extractDateFromName(file.name),
         }))
-        .filter(file => file.date !== null); // Filtrar archivos sin fecha válida
+        .filter(file => file.date !== null);
 
       if (files.length > 0) {
-        // Ordenar archivos por la fecha extraída del nombre
+        // Ordenar archivos por fecha en el nombre
         files.sort((a, b) => b.date - a.date);
 
         // Mostrar el último informe
         const latestFile = files[0];
-        document.getElementById('latest-title').textContent = latestFile.name;
-        document.getElementById('latest-title').style.display = "block";
-        document.getElementById('latest-link').setAttribute('href', latestFile.download_url);
+        const latestLink = document.getElementById('latest-link');
+        latestLink.textContent = `Descargar: ${latestFile.name}`;
+        latestLink.setAttribute('href', latestFile.download_url);
 
-        // Listar todos los informes en una lista ordenada
+        // Listar todos los informes en la lista
         const pdfList = document.getElementById('pdf-list');
-        pdfList.innerHTML = ""; // Limpiar lista existente
+        pdfList.innerHTML = "";
         files.forEach(file => {
           const listItem = document.createElement('li');
           listItem.innerHTML = `<a href="${file.download_url}" target="_blank">${file.name}</a>`;
           pdfList.appendChild(listItem);
         });
       } else {
-        document.getElementById('latest-title').textContent = "No hay informes disponibles.";
-        document.getElementById('latest-link').style.display = "none";
+        const latestLink = document.getElementById('latest-link');
+        latestLink.textContent = "No hay informes disponibles.";
+        latestLink.removeAttribute('href');
       }
     })
     .catch(error => console.error('Error al cargar los informes:', error));
